@@ -63,11 +63,13 @@ window.wakeup={
       if(option.url.iosJump){
         //需要跳转
         copy(aes.encrypt(JSON.stringify(param())));
-        this._el.href=option.url.iosJump+`/${location.search}`;
+        this._el.href='#'
         this._el.addEventListener('click',function () {
+          location.href=option.url.iosJump+`/${location.search}`;
           let start = new Date();
           setTimeout(function() {
             let end = new Date();
+            alert(end - start)
             if(end - start < 3000 && end - start > 2000) {
               window.location.href =option.url.iosDownload;
             }
@@ -94,7 +96,7 @@ if(process.env.NODE_ENV === 'development'){
     package:'com.remennovel',
     type:{
       android:true,
-      ios:false
+      ios:true
     },
     url:{
       androidDownload:'http://youqu-h5-2019.oss-cn-shenzhen.aliyuncs.com/yw/quzhuishu/dev/qzs_3.4.0-85_0326-19-33-07_340_jiagu_aligned_signed_slp1064_11974_002.apk',
